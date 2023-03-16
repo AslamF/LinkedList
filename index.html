@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+        <script>
+          
+          class node{
+            constructor(value, nextNode = null){
+                this.value = value;
+                this.nextNode = nextNode;
+            }
+          }
+
+
+          class linkedList{
+            constructor(){
+                this.head = null; // MEANS THE LIST IS EMPTY 
+                this.length = 0
+            }
+
+
+            // DIFFERENT METHOIDS
+
+            //ADD NODE TO END 
+            append(value) {
+
+            }
+
+
+            //ADD NODE TO START
+
+            prepend(value) {
+                this.head = new node(value, this.head)
+
+            }
+
+
+            //SIZE OF NODELIST
+
+            //RETURNS HEAD OF LIST
+
+            //RETURNS TAIL OF LIST
+
+            //RETURNS NODE AT INDEZ
+
+          }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </script>
+    
+</body>
+</html>
