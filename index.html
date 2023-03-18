@@ -10,10 +10,11 @@
 
         <script>
           
-          class node{
+          class Node{
             constructor(value, nextNode = null){
                 this.value = value;
                 this.nextNode = nextNode;
+        
             }
           }
 
@@ -29,6 +30,23 @@
 
             //ADD NODE TO END 
             append(value) {
+              let node = new Node(value);
+              let currentNode; 
+              //if list is empty make new entry the head
+              if (this.head === null){
+                this.head = node
+              }
+              //if the list is not empty, 
+              else{
+                currentNode = this.head;
+                while(currentNode.nextNode){
+                  currentNode = currentNode.nextNode;
+                }
+
+                currentNode.nextNode = node;
+              }
+              this.length++;
+  
 
             }
 
@@ -36,23 +54,140 @@
             //ADD NODE TO START
 
             prepend(value) {
-                this.head = new node(value, this.head)
+                this.head = new Node(value, this.head)
+                this.length++;
+                
 
             }
 
 
             //SIZE OF NODELIST
+            size(){
+                console.log(this.length);
+            }
 
             //RETURNS HEAD OF LIST
+          first(){
+              console.log(this.head.value)
+            }
 
             //RETURNS TAIL OF LIST
+          last(){
+            let currentNode = this.head;
+            while(currentNode.nextNode){
+              currentNode = currentNode.nextNode;
+            }
 
-            //RETURNS NODE AT INDEZ
+            console.log(currentNode.value);
 
+          }
+
+            //RETURNS NODE AT INDEX
+
+          at(index){
+            let currentNode = this.head;
+            let count = 0;
+            while(currentNode){
+              if (count == index){
+                console.log(currentNode.value)
+              }
+              count++;
+              currentNode = currentNode.nextNode;
+            }
+            return
+          }
+
+          // REMOVE LAST ELEMENT FROM LIST
+
+          pop(){
+              let currentNode = this.head;
+              let previousNode = null
+              while(currentNode.nextNode != null){
+                previousNode = currentNode;
+                currentNode = currentNode.nextNode;
+              }
+
+              previousNode.nextNode = null;
+             
+          }
+
+          // returns true if the passed in value is in the list
+
+          contains(value){
+            let currentNode = this.head;
+            while(currentNode != null){
+              if (currentNode.value === value){
+                console.log("tre")
+                return true;
+                
+              }
+              currentNode = currentNode.nextNode;
+            }
+            return false
+
+
+          }
+
+          //returns the index of the node containing value, null if not found
+
+          find(value){
+            let currentNode = this.head;
+            let count = 0;
+            while(currentNode != null){
+              if(currentNode.value === value){
+                console.log(count)
+                return count
+              }
+              count++;
+              currentNode = currentNode.nextNode;
+            }
+            return null;
+
+
+          }
+
+          //converts likledlist objects ans astrins, so you can print them out
+
+          toString(){
+            let currentNode = this.head;
+            let string = "";
+
+            while(currentNode != null){
+              string += `(${currentNode.value}) -> `;
+              currentNode = currentNode.nextNode
+            }
+
+            console.log((string += "null"))
           }
 
 
 
+
+            printListValues() {
+              let current = this.head;
+
+              while (current) {
+                console.log(current.value);
+                current = current.nextNode;
+              }
+            }
+          }
+
+
+          const testNode = new linkedList();
+
+          testNode.prepend(100);
+          testNode.prepend(200);
+          testNode.prepend(40);
+          testNode.append(25);
+          testNode.append(55)
+
+
+          testNode.toString()
+
+          testNode.find(25)
+          
+          
 
 
 
